@@ -9,5 +9,5 @@ public class MugpetApplication {
     public static void main(String[] args) {
         SpringApplication.run(MugpetApplication.class, args);
     }
-
+        //주석
 }
