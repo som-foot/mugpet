@@ -1,4 +1,2 @@
-package com.somfoot.mugpet.service.myPage;
-
-public class MyPageService {
+package com.somfoot.mugpet.service.myPage;public interface MyPageService {
 }

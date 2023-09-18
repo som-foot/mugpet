@@ -1,4 +1,2 @@
-package com.somfoot.mugpet.repository;
-
-public class ItemRepository {
+package com.somfoot.mugpet.repository;public interface ItemRepository {
 }
