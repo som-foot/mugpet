@@ -1,4 +1,2 @@
-package com.somfoot.mugpet.service.item;
-
-public class ItemService {
+package com.somfoot.mugpet.service.item;public interface ItemService {
 }

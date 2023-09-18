@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.somfoot.mugpet.repository;
 
 import com.somfoot.mugpet.dto.ItemDto;
@@ -25,4 +26,7 @@ public interface ItemRepository extends CrudRepository {
 
     //필터링 결과 정렬
     List<Item> orderByFiltering(Map<String, Object> param);
+=======
+package com.somfoot.mugpet.repository;public interface ItemRepository {
+>>>>>>> 6703bfa272b827ff1e82cd231ad1f10abdba9070
 }
