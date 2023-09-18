@@ -1,2 +1,4 @@
-package com.somfoot.mugpet.service.member;public interface MemberServie {
+package com.somfoot.mugpet.service.member;
+
+public interface MemberService {
 }

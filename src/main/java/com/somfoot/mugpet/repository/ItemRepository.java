@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 package com.somfoot.mugpet.repository;
 
-import com.somfoot.mugpet.dto.ItemDto;
 import com.somfoot.mugpet.entity.Item;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
@@ -21,12 +19,9 @@ public interface ItemRepository extends CrudRepository {
 
     //둘 중 뭘로?
     //item 필터링
-    List<ItemDto> filteringItemList(Map<String, Object> param);
+    List<Item> filteringItemList(Map<String, Object> param);
     List<Item> filteringItemList2(Map<String, Object> param);
 
     //필터링 결과 정렬
     List<Item> orderByFiltering(Map<String, Object> param);
-=======
-package com.somfoot.mugpet.repository;public interface ItemRepository {
->>>>>>> 6703bfa272b827ff1e82cd231ad1f10abdba9070
 }
