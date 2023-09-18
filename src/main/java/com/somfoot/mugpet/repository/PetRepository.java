@@ -1,2 +1,4 @@
-package com.somfoot.mugpet.repository;public interface PetRepository {
+package com.somfoot.mugpet.repository;
+
+public interface PetRepository {
 }

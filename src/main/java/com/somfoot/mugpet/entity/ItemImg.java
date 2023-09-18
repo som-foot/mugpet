@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 @Table(name="item_img")
-public class ImgFile {
+public class ItemImg {
 
 	@Id
 	@Column(name="item_img_id")
@@ -21,6 +21,10 @@ public class ImgFile {
 	private String imgUrl; //업데이트할 이미지 파일명
 
 	private String repImgYn; //대표 사진 설정
+
+	@ManyToOne
+	@JoinColumn(name="item_id")
+	private Item item;
 
 	//원본 이미지 파일명, 업데이트할 이미지 파일명, 이미지 경로를 파라미터로 받아서 이미지 정보를 업데이트
 	public void updateItemImg(String oriImgName, String imgName, String imgUrl) {
