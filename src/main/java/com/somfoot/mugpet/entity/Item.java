@@ -2,12 +2,14 @@ package com.somfoot.mugpet.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name = "ITEM")
 @Getter
+@Setter
 public class Item implements Serializable {
 
 	@Id
