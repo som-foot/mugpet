@@ -1,6 +1,14 @@
 package com.somfoot.mugpet.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+//Entity는 아니고 그냥 클래스 타입으로 쓰기위한 클래스 (o_id, u_id 없음)
+@Getter @Setter
 public class OrderItemInfos {
+
 
 	private int item_id;
 	private String orderAddr;
@@ -10,57 +18,5 @@ public class OrderItemInfos {
 	private int applyPoints;
 	private String itemName;
 	private String imageUrl;
-	
-	
-	public int getItem_id() {
-		return item_id;
-	}
-	public void setItem_id(int item_id) {
-		this.item_id = item_id;
-	}
-	public String getOrderAddr() {
-		return orderAddr;
-	}
-	public void setOrderAddr(String orderAddr) {
-		this.orderAddr = orderAddr;
-	}	
-	public int getOrderQty() {
-		return orderQty;
-	}
-	public void setOrderQty(int orderQty) {
-		this.orderQty = orderQty;
-	}
-	public String getReq() {
-		return req;
-	}
-	public void setReq(String req) {
-		this.req = req;
-	}
-	public int getItemPrice() {
-		return itemPrice;
-	}
-	public void setItemPrice(int itemPrice) {
-		this.itemPrice = itemPrice;
-	}
-	
-	public int getApplyPoints() {
-		return applyPoints;
-	}
-	public void setApplyPoints(int applyPoints) {
-		this.applyPoints = applyPoints;
-	}
-	public String getItemName() {
-		return itemName;
-	}
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
-	}
-	public String getImageUrl() {
-		return imageUrl;
-	}
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-	
 	
 }
