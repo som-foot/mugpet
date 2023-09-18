@@ -34,5 +34,4 @@ public class Item {
 		this.brand = brand;
 		this.itemDetail = itemDetail;
 	}
-
 }
