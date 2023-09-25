@@ -16,7 +16,7 @@ public class Item implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long item_id;				//primary key
 	private int category;				//item이 속한 category
-	private int species;					//반려동물 종
+	private int species;				//반려동물 종
 	private String itemName;			//상품명
 	private int price;					//가격
 	private String brand;				//브랜드
