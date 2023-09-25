@@ -1,37 +1,43 @@
 package com.somfoot.mugpet.entity;
 
+import com.somfoot.mugpet.etc.Category;
+import com.somfoot.mugpet.etc.Species;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Entity
-@Table(name="item")
+@Table(name="ITEM")
 @Getter @Setter
-public class Item {
+public class Item implements Serializable {
 
 	@Id
-	@Column(name = "item_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;				//primary key
-	private int category_id;			//item이 속한 category id
-	private int spe_id;					//반려동물 종 id
+	private long item_id;				//primary key
+	private int category;				//item이 속한 category
+	private int species;					//반려동물 종
 	private String itemName;			//상품명
 	private int price;					//가격
 	private String brand;				//브랜드
+	private String imgUrl;				//이미지url
 	private String itemDetail;			//상품 설명글
+
+	//1:1 양방향 연관관계
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn(name = "item_id")
+	private Filter filter;
 
 	public Item() {}
 
-	@Builder
-	public Item(int id, int category_id, int spe_id, String itemName, int price, String brand, String imageUrl,
-			String itemDetail) {
-		this.id = id;
-		this.category_id = category_id;
-		this.spe_id = spe_id;
+	@Builder(builderMethodName = "itemBuilder")
+
+	public Item(long item_id, int category, int species, String itemName) {
+		this.item_id = item_id;
+		this.category = category;
+		this.species = species;
 		this.itemName = itemName;
-		this.price = price;
-		this.brand = brand;
-		this.itemDetail = itemDetail;
 	}
 }
