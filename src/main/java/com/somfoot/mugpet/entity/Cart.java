@@ -1,31 +1,57 @@
 package com.somfoot.mugpet.entity;
 
+import com.somfoot.mugpet.repository.CartRepository;
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name="cart")
-@Getter
-@Setter
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+
 public class Cart {
-	@Id
-	@Column(name="cart_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;		//primary key(cartId)
-	//private int cart_id;
-	@Column(unique = true)
-	private int item_id;	//카트에 담은 item의 id
-	private int total;		//총 가격(상품 가격 * 개수)
-	private int cartQty;	//개수
-	private int u_id;		//로그인한 사용자 id
-	
+
+	private Map<String, CartItem> cartItemMap = Collections.synchronizedMap(new HashMap<String, CartItem>());
+
 	public Cart() {}
 
-	public Cart(int item_id, int total, int cartQty, int u_id) {
-		this.item_id = item_id;
-		this.total = total;
-		this.cartQty = cartQty;
-		this.u_id = u_id;
+	@Transactional
+	public void addItem(Item item){
+		//Map에 Item 추가
+		CartItem cartItem = cartItemMap.get(item.getId());
+		if(cartItem == null){
+			cartItem = new CartItem();
+			cartItem.setItem(item);
+			cartItem.setQuantity(0);
+			cartItemMap.put(Long.toString(item.getId()), cartItem);
+
+		}
+		cartItem.incrementQuantity();
 	}
+
+	public Item removeItemById(String itemId) {
+		CartItem cartItem = cartItemMap.remove(itemId);
+		if (cartItem == null)
+			return null;
+		else
+			return cartItem.getItem();
+	}
+
+	public void incrementQuantityByItemId(String itemId) {
+		CartItem cartItem = cartItemMap.get(itemId);
+		cartItem.incrementQuantity();
+	}
+
+	public void setQuantityByItemId(String itemId, int quantity) {
+		CartItem cartItem = cartItemMap.get(itemId);
+		cartItem.setQuantity(quantity);
+	}
+
+//	public double getSubTotal() {
+//
+//	}
+
 }
