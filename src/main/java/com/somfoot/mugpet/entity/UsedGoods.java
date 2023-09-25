@@ -11,6 +11,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class UsedGoods {
 
 	@Id
@@ -28,5 +29,7 @@ public class UsedGoods {
 	private int price;				//가격
 	private int likes;				//좋아요 수
 	private int replyCnt;			//댓글 수
-	private int u_id;				//작성자 id
+	@ManyToOne(targetEntity = MemberInfo.class)
+	@JoinColumn(name = "u_id")
+	private long u_id;				//작성자 id
 }
