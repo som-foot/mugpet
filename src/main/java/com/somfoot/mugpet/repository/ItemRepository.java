@@ -1,17 +1,18 @@
 package com.somfoot.mugpet.repository;
 
 import com.somfoot.mugpet.entity.Item;
+import com.somfoot.mugpet.entity.ItemImg;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 import java.util.Map;
 
-public interface ItemRepository extends CrudRepository {
+public interface ItemRepository extends JpaRepository<Item,Long> {
 
     //item 정렬
-
     List<Item> findBySpe_idOrderByStandASCOdASC(int spe_id);
 
     //item 정렬(카테고리별 페이지에서)
