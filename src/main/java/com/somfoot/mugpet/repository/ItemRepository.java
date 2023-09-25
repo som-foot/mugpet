@@ -1,9 +1,11 @@
 package com.somfoot.mugpet.repository;
 
 import com.somfoot.mugpet.entity.Item;
+import com.somfoot.mugpet.entity.ItemImg;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceContext;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,7 +13,11 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.Optional;
 
-public interface ItemRepository extends JpaRepository<Item, Long> {
+
+public interface ItemRepository extends JpaRepository<Item,Long> {
+
+
+    List<Item> findBySpe_idOrderByStandASCOdASC(int spe_id);
 
     //item 한 개
     Optional<Item> findById(Long item_id);

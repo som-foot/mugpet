@@ -1,5 +1,4 @@
 package com.somfoot.mugpet.entity;
-
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
