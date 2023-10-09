@@ -28,7 +28,6 @@ public class UsedGoods {
 	@NonNull
 	private int price;				//가격
 	private int likes;				//좋아요 수
-	private int replyCnt;			//댓글 수
 	@ManyToOne(targetEntity = MemberInfo.class)
 	@JoinColumn(name = "u_id")
 	private long u_id;				//작성자 id

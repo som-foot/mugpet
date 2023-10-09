@@ -12,12 +12,9 @@ public interface UsedGoodsRepository extends JpaRepository<UsedGoods, Long> {
     //insert
     //update
     @Query("update UsedGoods " +
-            "set imageUrl = :goods.imageUrl, title = :goods.title, content = :goods.content, enrollDt = SYSDATE, likes = :goods.likes, replyCnt = :goods.replyCnt, u_id = :goods.u_id" +
+            "set imageUrl = :goods.imageUrl, title = :goods.title, content = :goods.content, enrollDt = SYSDATE, likes = :goods.likes, u_id = :goods.u_id" +
             "where g_id = :goods.g_id")
     UsedGoods updateCom(UsedGoods goods);
-
-    @Query("update UsedGoods set replyCnt = replyCnt + :amount where g_id = :g_id")
-    int updateReplyCnt(int amount, long g_id);
 
     @Query("update UsedGoods set likes = likes + :amount where g_id = :g_id")
     int updateGoodsLikesCnt(int amount, long g_id);

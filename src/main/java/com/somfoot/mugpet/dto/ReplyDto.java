@@ -1,5 +1,6 @@
 package com.somfoot.mugpet.dto;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +13,9 @@ import java.util.Date;
 @AllArgsConstructor
 public class ReplyDto {
     private long rp_id;			//primary key
+    @NotEmpty(message = "내용은 필수 입력 값입니다.")
     private String content;		//댓글 내용
     private Date enrollDt;		//작성 시간
-    private int u_id;			//작성자 id
-    private int com_id;			//댓글 단 커뮤니티 글 id
-    private int g_id;			//댓글 단 중고거래 글 id
+    private long u_id;			//작성자 id
+    private long com_id;			//댓글 단 커뮤니티 글 id
 }
