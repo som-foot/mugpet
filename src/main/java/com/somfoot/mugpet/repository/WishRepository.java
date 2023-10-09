@@ -11,10 +11,10 @@ public interface WishRepository extends JpaRepository<Wish, Long> {
 
     //insert?
 
-    //delete item depends on user
+    //delete one item depends on user
 
     public void deleteWishByIdAndUser(@Param("itemId")long item_id, @Param("uId")long u_id);
 
-    //select
+    //select all item depends on user
     public Optional<Wish> findById(@Param("memberId")long member_id);
 }

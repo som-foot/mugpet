@@ -5,16 +5,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="wish")
+@Table(name="Wish")
 @Getter
 @Setter
 public class Wish {
 
-	@PrimaryKeyJoinColumn(name="item_id")
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;		//primary key
+	private long w_id;		//primary key
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="item_id")
 	private Item item;		//wish에 들어간 item_id
 
@@ -24,8 +24,8 @@ public class Wish {
 	
 	public Wish() {}
 
-	public Wish(long id, Item item, MemberInfo memberInfo) {
-		this.id = id;
+	public Wish(long w_id, Item item, MemberInfo memberInfo) {
+		this.w_id = w_id;
 		this.item = item;
 		this.memberInfo = memberInfo;
 	}
