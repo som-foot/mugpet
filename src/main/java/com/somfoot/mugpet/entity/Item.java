@@ -53,4 +53,6 @@ public class Item implements Serializable {
 		this.stockNum = stockNum;
 		this.filter = filter;
 	}
+
 }
+
