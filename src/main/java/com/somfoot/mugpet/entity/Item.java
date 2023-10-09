@@ -2,19 +2,15 @@ package com.somfoot.mugpet.entity;
 
 import com.somfoot.mugpet.dto.ItemFormDto;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name="ITEM")
-@Getter @Setter
-@NoArgsConstructor
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Item implements Serializable {
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,8 +29,8 @@ public class Item implements Serializable {
 		this.itemName = itemFormDto.getItemName();
 		this.itemDetail = itemFormDto.getItemDetail();
 		this.brand = itemFormDto.getBrand();
-		this.category = itemFormDto.getCategory_id();
-		this.species = itemFormDto.getSpe_id();
+		this.category = itemFormDto.getCategory();
+		this.species = itemFormDto.getSpecies();
 		this.stockNum = itemFormDto.getStockNum();
 		this.price = itemFormDto.getPrice();
 	}
@@ -45,11 +41,16 @@ public class Item implements Serializable {
 	private Filter filter;
 
 	@Builder(builderMethodName = "itemBuilder")
-	public Item(long item_id, int category, int species, String itemName) {
+	public Item(long item_id, int category, int species, String itemName, int price, String brand, String imgUrl, String itemDetail, int stockNum, Filter filter) {
 		this.item_id = item_id;
 		this.category = category;
 		this.species = species;
 		this.itemName = itemName;
+		this.price = price;
+		this.brand = brand;
+		this.imgUrl = imgUrl;
+		this.itemDetail = itemDetail;
+		this.stockNum = stockNum;
+		this.filter = filter;
 	}
-
 }
