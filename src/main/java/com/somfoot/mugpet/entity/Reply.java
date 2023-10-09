@@ -27,7 +27,4 @@ public class Reply {
 	@ManyToOne(targetEntity = Community.class)
 	@JoinColumn(name = "com_id")
 	private long com_id;			//댓글 단 커뮤니티 글 id
-	@ManyToOne(targetEntity = UsedGoods.class)
-	@JoinColumn(name = "g_id")
-	private long g_id;			//댓글 단 중고거래 글 id
 }

@@ -1,15 +1,14 @@
 package com.somfoot.mugpet.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name="FILTER")
-@Getter @Setter
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Filter implements Serializable {
 
 	@Id
@@ -22,8 +21,6 @@ public class Filter implements Serializable {
 	//1:1 양방향 연관관계
 	@OneToOne(mappedBy = "filter", optional = false)
 	private Item item;
-	
-	public Filter() {}
 
 	@Builder(builderMethodName = "filterBuilder")
 	public Filter(int item_id, int age, String stuff, String feature) {
