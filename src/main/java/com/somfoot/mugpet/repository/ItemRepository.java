@@ -16,11 +16,8 @@ import java.util.Optional;
 
 public interface ItemRepository extends JpaRepository<Item,Long> {
 
-
-    List<Item> findBySpe_idOrderByStandASCOdASC(int spe_id);
-
     //item 한 개
-    Optional<Item> findById(Long item_id);
+    Optional<Item> findById(long item_id);
 
     //item 목록
     List<Item> findAll();
@@ -35,7 +32,7 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
     List<Item> findBySpeciesAndCategory(int species, int category, Sort sort);
 
     //item 필터링
-
+    //mybatis로...?
 
     //item 필터링 결과 정렬
 
