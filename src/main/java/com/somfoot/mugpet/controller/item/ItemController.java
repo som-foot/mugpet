@@ -2,6 +2,7 @@ package com.somfoot.mugpet.controller.item;
 
 
 import com.somfoot.mugpet.dto.ItemFormDto;
+import com.somfoot.mugpet.dto.ItemImgDto;
 import com.somfoot.mugpet.entity.Item;
 import com.somfoot.mugpet.service.item.ItemImgService;
 import com.somfoot.mugpet.service.item.ItemService;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -83,20 +85,25 @@ public class ItemController {
     }
 
     @PostMapping(value = "/admin/items/{itemId}/edit")
-    public String modifyItem (ItemFormDto itemFormDto, RedirectAttributes redirectAttributes) throws Exception {
+    public String modifyItem (@RequestPart ItemFormDto itemFormDto,
+                              @RequestPart("itemImgFile") List<MultipartFile> itemImgFileList ,
+                              RedirectAttributes redirectAttributes) throws Exception {
 
         Item item = itemService.findById(itemFormDto.getId());
+        List<ItemImgDto> itemImgDtoList = new ArrayList<>();
 
+        for (int i=0; i<itemImgFileList.size(); i++) {
+            //item_id 에 해당하는 img 가져오기 쿼리 짜야함
+            itemImgDtoList.get(i) = itemImgService.findByItemId();
+        }
 
-        itemService.updateItemForm(itemFormDto);
+        itemService.updateItemForm(itemFormDto,itemImgFileList);
         item.updateItem(itemFormDto);
 
         redirectAttributes.addAttribute(itemFormDto.getId());
 
         return "redirect: /admin/items/{itemId}";
     }
-
-
 
 
 

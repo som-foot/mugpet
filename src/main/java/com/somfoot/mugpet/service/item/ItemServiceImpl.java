@@ -1,10 +1,11 @@
 package com.somfoot.mugpet.service.item;
 
 import com.somfoot.mugpet.dto.ItemFormDto;
+import com.somfoot.mugpet.dto.ItemImgDto;
 import com.somfoot.mugpet.entity.Item;
 import com.somfoot.mugpet.entity.ItemImg;
-import com.somfoot.mugpet.repository.ItemImgRepository;
 import com.somfoot.mugpet.repository.ItemRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,7 +42,7 @@ public class ItemServiceImpl implements ItemService{
 
         }
 
-        return item.getId();
+        return item.getItem_id();
     }
 
     @Override
@@ -54,7 +55,23 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public void updateItemForm(Item item, List<MultipartFile> ImgFileList) throws Exception {
+    public Long updateItemForm(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
+        //상품 수정
+        Item item = itemRepository.findById(itemFormDto.getId())
+                .orElseThrow(EntityNotFoundException::new);
+        item.updateItem(itemFormDto);
+
+        List<ItemImgDto> itemImgDtos = itemFormDto.getItemImgDtos();
+
+        //이미지 등록
+        //더티체킹
+        for(int i=0; i<itemImgDtos.size();i++) {
+            itemImgService.updateItemImg(itemImgDtos.get(i).getItem_img_id()
+                    ,itemImgFileList.get(i));
+        }
+        return item.getItem_id();
+
+
 
     }
 }

@@ -14,5 +14,5 @@ public interface ItemService {
 
    // void updateItemForm(Item item,List<MultipartFile> ImgFileList) throws Exception;
 
-    void updateItemForm(ItemFormDto itemFormDto);
+    Long updateItemForm(ItemFormDto itemFormDto,List<MultipartFile> itemImgFileList) throws Exception;
 }

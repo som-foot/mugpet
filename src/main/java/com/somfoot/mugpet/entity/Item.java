@@ -33,8 +33,8 @@ public class Item implements Serializable {
 		this.itemName = itemFormDto.getItemName();
 		this.itemDetail = itemFormDto.getItemDetail();
 		this.brand = itemFormDto.getBrand();
-		this.category = itemFormDto.getCategory_id();
-		this.species = itemFormDto.getSpe_id();
+		this.category = itemFormDto.getCategory();
+		this.species = itemFormDto.getSpecies();
 		this.stockNum = itemFormDto.getStockNum();
 		this.price = itemFormDto.getPrice();
 	}
