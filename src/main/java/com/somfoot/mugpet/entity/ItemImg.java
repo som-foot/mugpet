@@ -1,18 +1,20 @@
 package com.somfoot.mugpet.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
 @Table(name="item_img")
+@NoArgsConstructor
 public class ItemImg {
-
 	@Id
 	@Column(name="item_img_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long item_img_id;
 
 	private String imgName; //상품명
 	private String oriImgFileName; //원본이미지파일명
@@ -20,7 +22,7 @@ public class ItemImg {
 
 	private String repImgYn; //대표 사진 설정
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="item_id")
 	private Item item;
 
@@ -31,6 +33,13 @@ public class ItemImg {
 		this.imgUrl = imgUrl;
 	}
 
+
+	@Builder
+	public ItemImg (Long item_img_id, String oriImgFileName, String imgUrl) {
+		this.item_img_id = item_img_id;
+		this.oriImgFileName = oriImgFileName;
+		this.imgUrl =imgUrl;
+	}
 
 
 
