@@ -14,8 +14,7 @@ import java.util.List;
 @Setter
 public class ItemFormDto {
 
-
-    private Long id;
+    private Long item_id;
     @NotBlank
     private int category;			//item이 속한 category id
     @NotBlank
@@ -28,7 +27,6 @@ public class ItemFormDto {
     private String brand;				//브랜드
     @NotEmpty
     private String itemDetail;			//상품 설명글
-
     @NotEmpty
     private int stockNum;                  //상품 개수
 
@@ -36,9 +34,9 @@ public class ItemFormDto {
 
     public ItemFormDto() {}
     @Builder
-    public ItemFormDto(Long id,int category, int species, String itemName, int price,
+    public ItemFormDto(Long item_id,int category, int species, String itemName, int price,
                        String brand, String itemDetail,int stockNum) {
-        this.id = id;
+        this.item_id = item_id;
         this.category = category;
         this.species = species;
         this.itemName = itemName;
@@ -48,17 +46,17 @@ public class ItemFormDto {
         this.stockNum = stockNum;
     }
 
-
     //FormDto 를 엔티티로 리턴해주는 메소드
     public Item toEntity(ItemFormDto itemFormDto) {
         Item item = Item.itemBuilder()
-                .item_id(itemFormDto.id)
+                .item_id(itemFormDto.item_id)
                 .itemName(itemFormDto.itemName)
+                .price(itemFormDto.price)
                 .category(itemFormDto.category)
                 .species(itemFormDto.species)
-//                .itemDetail(itemFormDto.itemDetail)
-//                .brand(itemFormDto.brand)
-//                .stockNum(itemFormDto.stockNum)
+                .itemDetail(itemFormDto.itemDetail)
+                .brand(itemFormDto.brand)
+                .stockNum(itemFormDto.stockNum)
                 .build();
 
         return item;
@@ -67,7 +65,7 @@ public class ItemFormDto {
     //엔티티를 FormDto로 리턴해주는 메소드
     public ItemFormDto of(Item item) {
         ItemFormDto itemFormDto = ItemFormDto.builder()
-                .id(item.getItem_id())
+                .item_id(item.getItem_id())
                 .itemName(item.getItemName())
                 .category(item.getCategory())
                 .species(item.getSpecies())

@@ -28,4 +28,5 @@ public class Community {
 	@ManyToOne(targetEntity = MemberInfo.class)
 	@JoinColumn(name = "u_id")
 	private long u_id;					//작성자 id
+
 }

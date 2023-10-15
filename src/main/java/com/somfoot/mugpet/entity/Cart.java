@@ -21,12 +21,12 @@ public class Cart {
 	@Transactional
 	public void addItem(Item item){
 		//Map에 Item 추가
-		CartItem cartItem = cartItemMap.get(item.getId());
+		CartItem cartItem = cartItemMap.get(item.getItem_id());
 		if(cartItem == null){
 			cartItem = new CartItem();
 			cartItem.setItem(item);
 			cartItem.setQuantity(0);
-			cartItemMap.put(Long.toString(item.getId()), cartItem);
+			cartItemMap.put(Long.toString(item.getItem_id()), cartItem);
 
 		}
 		cartItem.incrementQuantity();

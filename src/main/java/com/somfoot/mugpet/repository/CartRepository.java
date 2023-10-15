@@ -13,11 +13,11 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 
     //insert?
 
-    //update item depends on user
+    //update one item depends on user
     @Query("update CartItem c set c.quantity = :qty where c.item_id = :itemId and c.u_id = :uId")
     public void updateItemQuantity(@Param("itemId") long item_id, @Param("uId")long u_id, @Param("qty")int quantity);
 
-    //delete item depends on user
+    //delete one item depends on user
     @Query("delete CartItem c where c.item_id = :itemId and c.u_id = :uId")
     public void deleteByIdAndUser(@Param("itemId")Long item_id, @Param("uId")long u_id);
 
